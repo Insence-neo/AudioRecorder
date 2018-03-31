@@ -7,18 +7,20 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.IBinder;
 import android.os.SystemClock;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Chronometer;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.insence.audiorecorder.Interface.RecorderInterface;
 import com.insence.audiorecorder.R;
 import com.insence.audiorecorder.Services.RecordingService;
+import com.scalified.fab.ActionButton;
 
 import java.io.File;
 
@@ -44,12 +46,18 @@ public class RecordFragment extends Fragment {
     //conn 数据连接对象
     private RecordServiceConn conn = new RecordServiceConn();
 
+    @BindView(R.id.tv)
+    TextView tv;
+    @BindView(R.id.cd_module)
+    CardView cdModule;
+    @BindView(R.id.cd_qulity)
+    CardView cdQulity;
+    @BindView(R.id.btnRecord)
+    ActionButton btnRecord;
     @BindView(R.id.chronometer)
     Chronometer mChronometer;
-    @BindView(R.id.btnRecord)
-    FloatingActionButton btnRecord;
     @BindView(R.id.btnStop)
-    FloatingActionButton btnStop;
+    ActionButton btnStop;
     Unbinder unbinder;
 
     public static RecordFragment newInstance(int position) {
@@ -73,7 +81,7 @@ public class RecordFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_record, container, false);
         unbinder = ButterKnife.bind(this, view);
-
+        initializeBtnSetting();
         btnRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,12 +93,11 @@ public class RecordFragment extends Fragment {
                     canPause = !canPause;
                 }
                 // 不可录音 可暂停
-                else if ( (!canRecord) && canPause) {
+                else if ((!canRecord) && canPause) {
                     PauseRecord();
                     //状态转换
                     canPause = !canPause;
-                }
-                else {
+                } else {
                     ResumeRecord();
                     //状态转换
                     canPause = !canPause;
@@ -105,6 +112,18 @@ public class RecordFragment extends Fragment {
             }
         });
         return view;
+    }
+
+    private void initializeBtnSetting() {
+        btnRecord.setSize(150.0f);
+        btnRecord.setImageResource(R.drawable.ic_mic);
+        btnRecord.setImageSize(50);
+        btnStop.setSize(75f);
+        btnStop.setImageResource(R.drawable.ic_media_stop);
+        btnStop.setImageSize(30);
+        // To set button color for normal state:
+        btnRecord.setButtonColor(getResources().getColor(R.color.colorPrimary));
+        btnStop.setButtonColor(getResources().getColor(R.color.colorPrimary));
     }
 
     @Override
@@ -123,13 +142,13 @@ public class RecordFragment extends Fragment {
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
             recorderInterface = (RecorderInterface) iBinder;//返回录音接口
         }
+
         //服务意外断开时回掉
         @Override
         public void onServiceDisconnected(ComponentName componentName) {
 
         }
     }
-
 
 
     //录音逻辑
@@ -139,7 +158,11 @@ public class RecordFragment extends Fragment {
         //视图逻辑
         btnRecord.setImageResource(R.drawable.ic_media_pause);
         btnStop.setImageResource(R.drawable.ic_media_stop);
-        Toast.makeText(getActivity(), "start record", Toast.LENGTH_SHORT).show();
+        btnStop.setEnabled(true);
+        mChronometer.setTextColor(getResources().getColor(R.color.Black));
+        tv.setText(R.string.Recording);
+        tv.setVisibility(View.VISIBLE);
+        //.makeText(getActivity(), "start record", Toast.LENGTH_SHORT).show();
         //创建文件夹
         File folder = new File(Environment.getExternalStorageDirectory() + "/AudioRecorder");
         if (!folder.exists()) {
@@ -150,6 +173,8 @@ public class RecordFragment extends Fragment {
 
         //时钟逻辑
         mChronometer.setBase(SystemClock.elapsedRealtime() - recordingTime);
+        int hour = (int) ((SystemClock.elapsedRealtime() - mChronometer.getBase()) / 1000 / 60);
+        mChronometer.setFormat("0" + String.valueOf(hour) + ":%s");
         mChronometer.start();
 
         // 服务逻辑
@@ -164,7 +189,8 @@ public class RecordFragment extends Fragment {
     private void PauseRecord() {
         //视图逻辑
         btnRecord.setImageResource(R.drawable.ic_media_play);
-        Toast.makeText(getActivity(),"Already pause", Toast.LENGTH_LONG).show();
+        tv.setText(R.string.Paused);
+        //Toast.makeText(getActivity(), "Already pause", Toast.LENGTH_LONG).show();
         //时钟逻辑
         mChronometer.stop();
         // 保存这次记录了的时间
@@ -176,7 +202,8 @@ public class RecordFragment extends Fragment {
     private void ResumeRecord() {
         //视图逻辑
         btnRecord.setImageResource(R.drawable.ic_media_pause);
-        Toast.makeText(getActivity(),"Already resume", Toast.LENGTH_LONG).show();
+        tv.setText(R.string.Recording);
+        //Toast.makeText(getActivity(), "Already resume", Toast.LENGTH_LONG).show();
         //时钟逻辑
         mChronometer.setBase(SystemClock.elapsedRealtime() - recordingTime);
         mChronometer.start();
@@ -185,22 +212,26 @@ public class RecordFragment extends Fragment {
     }
 
     private void stopRecord() {
-        //时钟逻辑
-        mChronometer.stop();
-        //清零
-        recordingTime = 0;
-        mChronometer.setBase(SystemClock.elapsedRealtime());
-        //视图逻辑
-        btnRecord.setImageResource(R.drawable.ic_mic_white_36dp);
-        btnStop.setImageResource(R.drawable.ic_media_stop);
-        //tv.setText("Tap to record");
+        if (!canRecord) {
+            //时钟逻辑
+            mChronometer.stop();
+            //清零
+            recordingTime = 0;
+            mChronometer.setBase(SystemClock.elapsedRealtime());
+            //视图逻辑
+            btnRecord.setImageResource(R.drawable.ic_mic);
+            btnStop.setImageResource(R.drawable.ic_media_stop);
+            tv.setVisibility(View.INVISIBLE);
+            canRecord = true;
+            canPause = false;
+            //服务逻辑  解绑服务 并关闭服务
+            getActivity().unbindService(conn);
+            getActivity().stopService(intent);
+            //allow the screen to turn off again once recording is finished
+            getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        } else {
+            Toast.makeText(getActivity(),"Please record firstly",Toast.LENGTH_SHORT).show();
+        }
 
-        canRecord = true;
-        canPause = false;
-        //服务逻辑  解绑服务 并关闭服务
-        getActivity().unbindService(conn);
-        getActivity().stopService(intent);
-        //allow the screen to turn off again once recording is finished
-        getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 }

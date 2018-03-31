@@ -1,34 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.insence.audiorecorder.activities.MainActivity"
-    android:orientation="vertical">
-
-    <include
-        android:id="@+id/tb"
-        layout="@layout/toolbar"/>
-
-    <com.astuetz.PagerSlidingTabStrip
-        android:id="@+id/psts"
+    <!--加强版FrameLayout 用于监测其他控件 因为是FrameLayout 需要配合AppBarLayout使用 -->
+    <android.support.design.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="com.insence.audiorecorder.activities.MainActivity"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
-        android:textColor="#FFFFFF"
-        app:pstsIndicatorColor="@color/colorPrimary"
-        app:pstsIndicatorHeight="@dimen/tab_indicator_height"
-        app:pstsDividerColor="@color/DividerColor"
-         >
-    </com.astuetz.PagerSlidingTabStrip>
+        android:layout_height="match_parent">
+    <!--AppBarLayout 由Design Support提供 相当于一个垂直的LinearLayout 放在了FrameLayout
+当滚动时 事务就交给了AppBarLayout处理了 当滚动的时候 此时-->
+        <android.support.design.widget.AppBarLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent" >
 
+            <include
+                android:id="@+id/tb"
+                layout="@layout/toolbar"/>
+
+            <com.astuetz.PagerSlidingTabStrip
+                android:id="@+id/psts"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorPrimary"
+                android:textColor="#FFFFFF"
+                app:pstsIndicatorColor="@color/colorPrimary"
+                app:pstsIndicatorHeight="@dimen/tab_indicator_height"
+                app:pstsDividerColor="@color/DividerColor" >
+            </com.astuetz.PagerSlidingTabStrip>
+        </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:id="@+id/vp"
-        android:layout_height="0px"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
         android:layout_width="match_parent">
     </android.support.v4.view.ViewPager>
+    </android.support.design.widget.CoordinatorLayout>
 
-</LinearLayout>
+

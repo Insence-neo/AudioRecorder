@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AudioRecorder</string>
+    <string name="record_track">Track</string>
+    <string name="record_quality">Quality</string>
+    <string name="Recording">Recording</string>
+    <string name="Paused">Paused</string>
 </resources>

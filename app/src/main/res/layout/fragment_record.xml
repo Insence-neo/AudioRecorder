@@ -1,47 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--android:gravity="center" 设置布局内文字居中-->
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_record"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:background="@color/FragmentBackground"
+    tools:layout_editor_absoluteY="25dp">
+
 
     <Chronometer
         android:id="@+id/chronometer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:format="00:00:00"
-        android:textSize="63sp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-light"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="95dp"
-        />
+        android:format="00:00:00"
+        android:textSize="70sp"
+        android:textColor="@color/ChronometerColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.073" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></LinearLayout>
 
-    <android.support.design.widget.FloatingActionButton
+    <com.scalified.fab.ActionButton
         android:id="@+id/btnRecord"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="90dp"
-        android:layout_marginStart="90dp"
-        android:src="@drawable/ic_mic_white_36dp"
-        app:fabSize="normal">
-    </android.support.design.widget.FloatingActionButton>
+        android:layout_width="@dimen/dp_150"
+        android:layout_height="@dimen/dp_150"
+        app:layout_constraintBottom_toTopOf="@+id/cd_module"
+        app:layout_constraintEnd_toEndOf="@+id/chronometer"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/chronometer"
+        app:layout_constraintTop_toBottomOf="@+id/chronometer"
+        app:layout_constraintVertical_bias="0.596"></com.scalified.fab.ActionButton>
 
-    <android.support.design.widget.FloatingActionButton
+    <com.scalified.fab.ActionButton
         android:id="@+id/btnStop"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_alignBottom="@+id/btnRecord"
-        android:layout_marginLeft="12dp"
-        android:layout_marginStart="12dp"
-        android:layout_toEndOf="@+id/btnRecord"
-        android:layout_toRightOf="@+id/btnRecord"
-        android:src="@drawable/ic_media_stop"
-        app:fabSize="mini">
+        android:layout_width="@dimen/dp_75"
+        android:layout_height="@dimen/dp_75"
+        app:layout_constraintBottom_toBottomOf="@+id/btnRecord"
+        app:layout_constraintEnd_toEndOf="@+id/chronometer"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/chronometer">
 
-    </android.support.design.widget.FloatingActionButton>
-</RelativeLayout>
+    </com.scalified.fab.ActionButton>
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="sans-serif-thing"
+        android:text="TextView"
+        android:textColor="@color/CaptionColor"
+        android:textSize="20sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/chronometer"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/chronometer"
+        app:layout_constraintTop_toBottomOf="@+id/chronometer" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cd_module"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_28"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guildeline1"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="@dimen/dp_150"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp_5"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_5"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_track" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-medium"
+                    android:paddingLeft="@dimen/dp_18"
+                    android:paddingTop="@dimen/dp_6"
+                    android:text="@string/record_track"
+                    android:textColor="@color/ButtonFontColor"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:paddingLeft="@dimen/dp_18"
+                    android:paddingTop="@dimen/dp_2"
+                    android:text="normal"
+                    android:textColor="@color/CaptionColor"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cd_qulity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_28"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="@+id/guildeline1">
+
+        <LinearLayout
+            android:layout_width="@dimen/dp_150"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp_5"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_5"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_quality" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-medium"
+                    android:paddingLeft="@dimen/dp_18"
+                    android:paddingTop="@dimen/dp_6"
+                    android:text="@string/record_quality"
+                    android:textColor="@color/ButtonFontColor"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:paddingLeft="@dimen/dp_18"
+                    android:paddingTop="@dimen/dp_2"
+                    android:text="normal"
+                    android:textColor="@color/CaptionColor"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guildeline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+</android.support.constraint.ConstraintLayout>

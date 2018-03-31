@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#3f51b5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="Background">#FFFFFF</color>
+    <color name="FragmentBackground">#FFF2F2F3</color>
     <color name="DividerColor">#FFFFFF</color>
+    <color name="ChronometerColor">#9C9C9C</color>
+    <color name="CaptionColor">#868686</color>
+    <color name="ButtonFontColor">#222222</color>
+    <color name="BodyColor">#222222</color>
+    <color name="Black">#000000</color>
+    <color name="stop">#696969</color>
 </resources>
