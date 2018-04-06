@@ -34,12 +34,13 @@
         android:id="@+id/btnRecord"
         android:layout_width="@dimen/dp_150"
         android:layout_height="@dimen/dp_150"
-        app:layout_constraintBottom_toTopOf="@+id/cd_module"
+        app:layout_constraintBottom_toTopOf="@+id/cd_track"
         app:layout_constraintEnd_toEndOf="@+id/chronometer"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/chronometer"
         app:layout_constraintTop_toBottomOf="@+id/chronometer"
-        app:layout_constraintVertical_bias="0.596"></com.scalified.fab.ActionButton>
+        app:layout_constraintVertical_bias="0.596">
+    </com.scalified.fab.ActionButton>
 
     <com.scalified.fab.ActionButton
         android:id="@+id/btnStop"
@@ -56,7 +57,6 @@
         android:id="@+id/tv"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
         android:fontFamily="sans-serif-thing"
         android:text="TextView"
         android:textColor="@color/CaptionColor"
@@ -68,14 +68,18 @@
         app:layout_constraintTop_toBottomOf="@+id/chronometer" />
 
     <android.support.v7.widget.CardView
-        android:id="@+id/cd_module"
+        android:id="@+id/cd_track"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dp_28"
+        android:layout_marginBottom="@dimen/dp_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guildeline1"
         app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="3dp">
 
         <LinearLayout
             android:layout_width="@dimen/dp_150"
@@ -99,11 +103,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:fontFamily="sans-serif-medium"
                     android:paddingLeft="@dimen/dp_18"
-                    android:paddingTop="@dimen/dp_6"
+                    android:paddingTop="@dimen/dp_10"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textStyle="bold"
                     android:text="@string/record_track"
-                    android:textColor="@color/ButtonFontColor"
                     android:textSize="16sp" />
 
                 <TextView
@@ -111,7 +115,8 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:paddingLeft="@dimen/dp_18"
-                    android:paddingTop="@dimen/dp_2"
+                    android:paddingTop="@dimen/dp_3"
+                    android:fontFamily="sans-serif-condensed"
                     android:text="normal"
                     android:textColor="@color/CaptionColor"
                     android:textSize="14sp" />
@@ -123,11 +128,15 @@
         android:id="@+id/cd_qulity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dp_28"
+        android:layout_marginBottom="@dimen/dp_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toStartOf="@+id/guildeline1">
+        app:layout_constraintStart_toStartOf="@+id/guildeline1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="3dp">
 
         <LinearLayout
             android:layout_width="@dimen/dp_150"
@@ -151,11 +160,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:fontFamily="sans-serif-medium"
                     android:paddingLeft="@dimen/dp_18"
-                    android:paddingTop="@dimen/dp_6"
+                    android:paddingTop="@dimen/dp_10"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textStyle="bold"
                     android:text="@string/record_quality"
-                    android:textColor="@color/ButtonFontColor"
                     android:textSize="16sp" />
 
                 <TextView
@@ -163,7 +172,8 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:paddingLeft="@dimen/dp_18"
-                    android:paddingTop="@dimen/dp_2"
+                    android:paddingTop="@dimen/dp_3"
+                    android:fontFamily="sans-serif-condensed"
                     android:text="normal"
                     android:textColor="@color/CaptionColor"
                     android:textSize="14sp" />
