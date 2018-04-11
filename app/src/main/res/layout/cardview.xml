@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_75"
+    android:layout_gravity="center"
+    android:layout_marginEnd="@dimen/dp_8"
+    android:layout_marginStart="@dimen/dp_8"
+    android:layout_marginTop="@dimen/dp_8"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:transitionName="open_mediaplayer"
+    card_view:cardCornerRadius="4dp"
+    card_view:cardElevation="3dp">
+    <com.insence.audiorecorder.libs.FillSeekBar
+        android:id="@+id/FillSeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:fill_color="@color/colorPrimary">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <ImageView
+            android:id="@+id/image_quality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_quality_high"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/image_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_play"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/file_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/file_date_added_text"
+            app:layout_constraintLeft_toRightOf="@+id/image_quality"
+            app:layout_constraintTop_toTopOf="@+id/image_quality" />
+
+        <TextView
+            android:id="@+id/play_progress_text"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:textSize="12sp"
+            android:fontFamily="sans-serif-condensed"
+            app:layout_constraintLeft_toRightOf="@+id/file_name_text"
+            app:layout_constraintTop_toTopOf="@+id/file_name_text"
+            app:layout_constraintBottom_toBottomOf="@+id/file_name_text"
+            app:layout_constraintRight_toLeftOf="@id/image_state"
+            app:layout_constraintHorizontal_bias="1"
+            />
+
+        <TextView
+            android:id="@+id/file_date_added_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/image_quality"
+            app:layout_constraintLeft_toLeftOf="@+id/file_name_text"
+            app:layout_constraintTop_toBottomOf="@+id/file_name_text" />
+
+        <TextView
+            android:id="@+id/file_length_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:text="00:00"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/file_date_added_text"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toRightOf="@+id/file_date_added_text"
+            app:layout_constraintRight_toLeftOf="@id/image_state"
+            app:layout_constraintTop_toTopOf="@+id/file_date_added_text" />
+
+        </android.support.constraint.ConstraintLayout>
+    </com.insence.audiorecorder.libs.FillSeekBar>
+</android.support.v7.widget.CardView>

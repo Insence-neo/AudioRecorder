@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--android:gravity="center" 设置布局内文字居中-->
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_record"
@@ -72,6 +73,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/dp_24"
+        android:color="#20000000"
+        android:foreground="@drawable/cardview_foreground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guildeline1"
         app:layout_constraintHorizontal_bias="0.8"
@@ -86,6 +89,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
+                android:id="@+id/image_cardview_track"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/dp_5"
@@ -105,20 +109,19 @@
                     android:layout_weight="1"
                     android:paddingLeft="@dimen/dp_18"
                     android:paddingTop="@dimen/dp_10"
-                    android:fontFamily="sans-serif-condensed"
-                    android:textStyle="bold"
+                    style="@style/TextAppearance.AppCompat.Title"
                     android:text="@string/record_track"
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/tv_cardview_track"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:paddingLeft="@dimen/dp_18"
                     android:paddingTop="@dimen/dp_3"
-                    android:fontFamily="sans-serif-condensed"
+                    style="@style/TextAppearance.AppCompat.Caption"
                     android:text="normal"
-                    android:textColor="@color/CaptionColor"
                     android:textSize="14sp" />
             </LinearLayout>
         </LinearLayout>
@@ -129,6 +132,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/dp_24"
+        android:color="#20000000"
+        android:foreground="@drawable/cardview_foreground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
@@ -143,13 +148,14 @@
             android:layout_height="wrap_content">
 
             <ImageView
+                android:id="@+id/image_cardview_quality"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/dp_5"
                 android:layout_marginLeft="@dimen/dp_10"
                 android:layout_marginTop="@dimen/dp_5"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_quality" />
+                android:src="@drawable/ic_quality_high" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -162,20 +168,19 @@
                     android:layout_weight="1"
                     android:paddingLeft="@dimen/dp_18"
                     android:paddingTop="@dimen/dp_10"
-                    android:fontFamily="sans-serif-condensed"
-                    android:textStyle="bold"
+                    style="@style/TextAppearance.AppCompat.Title"
                     android:text="@string/record_quality"
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/tv_cardview_quality"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:paddingLeft="@dimen/dp_18"
                     android:paddingTop="@dimen/dp_3"
-                    android:fontFamily="sans-serif-condensed"
-                    android:text="normal"
-                    android:textColor="@color/CaptionColor"
+                    android:text="Normal"
+                    style="@style/TextAppearance.AppCompat.Caption"
                     android:textSize="14sp" />
             </LinearLayout>
         </LinearLayout>

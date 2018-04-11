@@ -15,7 +15,7 @@ public class FragmentAdapter extends FragmentPagerAdapter {
     //private List<Fragment> fraglist;
     private String[] titlelist = {"Record","Saved"};
 
-    public FragmentAdapter(FragmentManager fm/*,List<Fragment> fraglist,List<String> titlelist*/) {
+    public FragmentAdapter(FragmentManager fm) {
         super(fm);
     }
 
