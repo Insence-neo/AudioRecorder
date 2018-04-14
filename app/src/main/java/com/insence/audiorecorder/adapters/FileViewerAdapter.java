@@ -59,7 +59,7 @@ public class FileViewerAdapter extends RecyclerView.Adapter<FileViewerAdapter.Re
     RecordingItem item;
     Context mContext;
     LinearLayoutManager llm;
-
+    OnItemClickListener mOnItemClickListener = null;
 
 
     //构造函数 用于接收数据集合
@@ -164,20 +164,12 @@ public class FileViewerAdapter extends RecyclerView.Adapter<FileViewerAdapter.Re
                             case 2:
                                 deleteFileDialog(holder.getPosition());
                                 break;
+                            case 3:
+                                moreDetailsDialog(holder.getPosition());
                         }
                     }
                 });
-//                builder.setItems(items, new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int item) {
-//                        if (item == 0) {
-//                            shareFileDialog(holder.getPosition());
-//                        } if (item == 1) {
-//                            renameFileDialog(holder.getPosition());
-//                        } else if (item == 2) {
-//                            deleteFileDialog(holder.getPosition());
-//                        }
-//                    }
-//                });
+
                 builder.setCancelable(true);
                 builder.setNegativeButton(mContext.getString(R.string.dialog_action_cancel),
                         new DialogInterface.OnClickListener() {
@@ -347,10 +339,39 @@ public class FileViewerAdapter extends RecyclerView.Adapter<FileViewerAdapter.Re
         alert.show();
     }
 
+    public void moreDetailsDialog (final int position) {
+        RecordingItem item = getItem(position);
+        String filename =item.getName();
+        String recordingTime = DateUtils.formatDateTime(
+                mContext,
+                item.getTime(),
+                DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_NUMERIC_DATE | DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_YEAR
+        );
+        String length = String.valueOf(item.getLength()) +"ms";
+        String format = "Track:" + item.getTrack()+ "  SampleRate:" + item.getSampleRate() + "kz " + "\n Format:wav";
+        String location = item.getFilePath();
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+        builder.setTitle(mContext.getString(R.string.dialog_title_options));
+        List<OptionItem> items = new ArrayList<>();
+        items.add(new OptionItem(R.drawable.ic_filename, mContext.getString(R.string.dialog_title_filename),filename));
+        items.add(new OptionItem(R.drawable.ic_recoridngtime, mContext.getString(R.string.dialog_title_recording_time),recordingTime));
+        items.add(new OptionItem(R.drawable.ic_length, mContext.getString(R.string.dialog_title_length),length));
+        items.add(new OptionItem(R.drawable.ic_format, mContext.getString(R.string.dialog_title_format),format));
+        items.add(new OptionItem(R.drawable.ic_location, mContext.getString(R.string.dialog_title_file_location),location));
+        OptionAdapter adapter = new OptionAdapter(items,mContext);
+        builder.setAdapter(adapter, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+            }
+        });
+        builder.setCancelable(true);
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
 
 
 
-    OnItemClickListener mOnItemClickListener = null;
+
     public interface OnItemClickListener{
         void onClick(int position,RecordingsViewHolder holder,RecordingItem item);
         //void onLongClick(int position);

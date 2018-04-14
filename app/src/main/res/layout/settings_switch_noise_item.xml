@@ -21,13 +21,13 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/settings_noisesuppresor"
+                android:text="@string/settings_noisesuppressor"
                 style="@style/Base.TextAppearance.AppCompat.Subhead"
                 />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/settings_noisesuppresor_caption"
+                android:text="@string/settings_noisesuppressor_caption"
                 style="@style/TextAppearance.AppCompat.Caption"
                 />
         </LinearLayout>

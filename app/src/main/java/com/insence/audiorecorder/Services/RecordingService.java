@@ -1,5 +1,7 @@
 package com.insence.audiorecorder.Services;
 
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -78,6 +80,7 @@ public class RecordingService extends Service {
         sampleRate = preferences.getInt("sampleRate",16000);
         quality_imageId = preferences.getInt("quality_imageId", R.drawable.ic_quality_normal);
         track = preferences.getString("track",getString(R.string.dialog_single_track));
+        //TODO创建前台通知
     }
 
     //Service被启动时调用

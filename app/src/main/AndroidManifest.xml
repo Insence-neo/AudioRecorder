@@ -22,7 +22,6 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="com.insence.play_state.RECEIVER" />
-                <action android:name="com.insence.finish_time.RECEIVER" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

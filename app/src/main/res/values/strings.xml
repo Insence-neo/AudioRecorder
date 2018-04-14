@@ -31,7 +31,9 @@
     <string name="dialog_title_share">Share File</string>
     <string name="dialog_title_rename">Rename File</string>
     <string name="dialog_title_options">Options</string>
+    <string name="dialog_title_details">Details</string>
 
+    <!-- Dialogs Options-->
     <string name="dialog_file_share">Share File</string>
     <string name="dialog_file_rename">Rename File</string>
     <string name="dialog_file_delete">Delete File</string>
@@ -41,6 +43,7 @@
     <string name="dialog_action_yes">Yes</string>
     <string name="dialog_action_no">No</string>
 
+    <!-- Dialogs CardView-->
     <string name="dialog_single_track">Mono</string>
     <string name="dialog_single_track_caption">Single track</string>
     <string name="dialog_dual_track">Stereo</string>
@@ -54,6 +57,14 @@
     <string name="dialog_premium">Premium</string>
     <string name="dialog_premium_caption">Hi-Fi music recording</string>
 
+    <!-- Dialogs Details-->
+    <string name="dialog_title_filename">File Name</string>
+    <string name="dialog_title_recording_time">Recording Time</string>
+    <string name="dialog_title_length">Length</string>
+    <string name="dialog_title_format">Format</string>
+    <string name="dialog_title_control">Noise Suppressor/Automatic Gain </string>
+    <string name="dialog_title_file_location">File Location</string>
+
     <!-- Toasts -->
     <string name="toast_recording_start">Recording started</string>
     <string name="toast_recording_finish">Recording saved to</string>
@@ -63,8 +74,8 @@
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->
-    <string name="settings_noisesuppresor">Enable NoiseSuppresor</string>
-    <string name="settings_noisesuppresor_caption">For noise reduction</string>
+    <string name="settings_noisesuppressor">Enable NoiseSuppressor</string>
+    <string name="settings_noisesuppressor_caption">For noise reduction</string>
     <string name="info">Application Info</string>
     <string name="info_caption">License</string>
     <string name="settings_AutomaticGainControl">Enable Automatic Gain Control</string>
