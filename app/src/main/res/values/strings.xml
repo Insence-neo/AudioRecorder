@@ -6,12 +6,23 @@
     <string name="Recording">Recording</string>
     <string name="Paused">Paused</string>
 
+    <!-- About -->
+    <string name="link">Contact: github.com/Insence-neo/AudioRecorder</string>
+
     <!-- CardView -->
     <string name="imageId_single_track">R.drawable.ic_track</string>
     <string name="imageId_dual_track">R.drawable.ic_dual_track</string>
     <string name="imageId_normal">R.drawable.ic_quality</string>
     <string name="imageId_high">R.drawable.ic_quality</string>
     <string name="imageId_premium">R.drawable.ic_quality</string>
+
+    <!-- Permission -->
+    <string name="permissions_required">App requires some permissions</string>
+    <string name="permissions_denied">You already denied the requires</string>
+    <string name="permissions_denied_again">You denied the requires again</string>
+    <string name="permissions_warning">You already denied the requires and you will jso that the record can not be used</string>
+    <string name="permissions_action_yes">Yes</string>
+    <string name="permissions_action_no">No</string>
 
     <!-- Dialogs -->
     <string name="dialog_title_delete">Confirm Delete!</string>

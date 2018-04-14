@@ -1,10 +1,13 @@
 package com.insence.audiorecorder.activities;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -24,10 +27,12 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import pub.devrel.easypermissions.AppSettingsDialog;
+import pub.devrel.easypermissions.EasyPermissions;
 
 
-public class MainActivity extends AppCompatActivity {
-    //private List<View> viewList = new ArrayList<>();
+public class MainActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
+    private static final int PERMISSION_REQ = 0;
     private List<String> stringList = new ArrayList<>();
     private List<Fragment> fragmentList = new ArrayList<>();
 
@@ -37,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     PagerSlidingTabStrip psts;
     @BindView(R.id.vp)
     ViewPager vp;
+    private String[] permissions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
         setTabsValue();
         //PagerSlidingTabStrip绑定ViewPager
         psts.setViewPager(vp);
+        //获取权限
+        getPermissions();
     }
 
     //menu
@@ -69,6 +77,53 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
         return true;
+    }
+
+    private void getPermissions() {
+        permissions = new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.RECORD_AUDIO};
+        if (!EasyPermissions.hasPermissions(MainActivity.this, permissions)) {
+            EasyPermissions.requestPermissions(this, getString(R.string.permissions_required),
+                    PERMISSION_REQ, permissions);
+        }
+    }
+
+    @Override
+   public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                                     @NonNull int[] grantResults) {
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+    }
+
+    //权限处理的回掉函数
+    @Override
+    public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
+        Toast.makeText(this,"You already granted permissions",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
+        showRationale(requestCode,perms);
+    }
+
+    //拒绝的dialog
+    private void showRationale(int requestCode,List<String> perms) {
+        Toast.makeText(this, R.string.permissions_denied, Toast.LENGTH_SHORT).show();
+        new AppSettingsDialog
+                .Builder(this)
+                .build()
+                .show();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == AppSettingsDialog.DEFAULT_SETTINGS_REQ_CODE) {
+            if (!EasyPermissions.hasPermissions(this, permissions)) {
+                //这里响应的是AppSettingsDialog点击取消按钮的效果
+                Toast.makeText(this, R.string.permissions_denied, Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }
     }
 
     private void setTabsValue() {

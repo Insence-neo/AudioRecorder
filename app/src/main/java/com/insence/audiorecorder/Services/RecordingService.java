@@ -52,7 +52,6 @@ public class RecordingService extends Service {
     //binder实例
     private RecordingBinder binder = new RecordingBinder();
     private SharedPreferences preferences;
-    private BroadCast receiver;
     private boolean check_noise;
 
     public RecordingService() {
@@ -72,12 +71,6 @@ public class RecordingService extends Service {
         super.onCreate();
         //创建数据库存储文件名 等信息
         mDatabase = new DBHelper(getApplicationContext());
-        //注册广播
-        //实例化
-        receiver = new  BroadCast();
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("com.insence.finish_time.RECEIVER");
-        registerReceiver(receiver, intentFilter);
         //获取音频设置
         preferences = getSharedPreferences("Data",MODE_PRIVATE);
         check_noise = preferences.getBoolean("check_noise",false);
@@ -112,11 +105,10 @@ public class RecordingService extends Service {
     @Override
     public void onDestroy() {
         if (recorder != null) {
-            //关闭广播接收
-            unregisterReceiver(receiver);
             stopRecording();
             //服务结束 写下数据
             try {
+                mElapsedMillis = preferences.getLong("length",0);
                 mDatabase.addRecording(mFileName, mFilePath, mElapsedMillis,quality_imageId,track,sampleRate);
             } catch (Exception e){
                 Log.e(LOG_TAG, "exception", e);

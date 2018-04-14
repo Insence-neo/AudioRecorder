@@ -340,6 +340,7 @@ public class RecordFragment extends Fragment {
         if (!canRecord) {
             //写下记录总时长
             length = recordingTime +(SystemClock.elapsedRealtime() - statTime);
+            //写入记录
             editor.putLong("length", length);
             editor.apply();
             //视图逻辑

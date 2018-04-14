@@ -106,7 +106,8 @@ public class SettingsFragment extends Fragment {
         cdInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "1", Toast.LENGTH_SHORT).show();
+                LicensesFragment licensesFragment = new LicensesFragment();
+                licensesFragment.show(getActivity().getSupportFragmentManager().beginTransaction(), "dialog_licenses");
             }
         });
 
