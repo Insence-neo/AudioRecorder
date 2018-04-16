@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:color="#20000000"
-        android:foreground="@drawable/cardview_foreground">
+        android:foreground="?attr/selectableItemBackground">
         <include layout="@layout/settings_switch_noise_item" />
     </android.support.v7.widget.CardView>
 
@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:color="#20000000"
-        android:foreground="@drawable/cardview_foreground">
+        android:foreground="?attr/selectableItemBackground">
         <include layout="@layout/setting_switch_atuogain_item" />
     </android.support.v7.widget.CardView>
 
@@ -34,7 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:color="#20000000"
-        android:foreground="@drawable/cardview_foreground">
+        android:foreground="?attr/selectableItemBackground">
         <include layout="@layout/settings_basic_item" />
     </android.support.v7.widget.CardView>
 </LinearLayout>
