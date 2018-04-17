@@ -1,9 +1,12 @@
 package com.insence.audiorecorder.adapters;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.insence.audiorecorder.R;
+import com.insence.audiorecorder.activities.MainActivity;
 import com.insence.audiorecorder.fragments.FileViewerFragment;
 import com.insence.audiorecorder.fragments.RecordFragment;
 
@@ -12,10 +15,17 @@ import com.insence.audiorecorder.fragments.RecordFragment;
  */
 
 public class FragmentAdapter extends FragmentPagerAdapter {
+    private Context mContext;
     //private List<Fragment> fraglist;
-    private String[] titlelist = {"Record","Saved"};
+    private String[] titlelist;
+
+    public FragmentAdapter(FragmentManager fm, Context mContext) {
+        super(fm);
+        titlelist = new String[]{mContext.getResources().getString(R.string.title_record), mContext.getResources().getString(R.string.title_saved)};
+    }
 
     public FragmentAdapter(FragmentManager fm) {
+
         super(fm);
     }
 

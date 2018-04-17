@@ -22,7 +22,7 @@
     <string name="permissions_required">App requires some permissions</string>
     <string name="permissions_denied">You already denied the requires</string>
     <string name="permissions_denied_again">You denied the requires again</string>
-    <string name="permissions_warning">You already denied the requires and you will jso that the record can not be used</string>
+    <string name="permissions_warning">You already denied the requires and you will goto settings,otherwise the record can not be used</string>
     <string name="permissions_action_yes">Yes</string>
     <string name="permissions_action_no">No</string>
 

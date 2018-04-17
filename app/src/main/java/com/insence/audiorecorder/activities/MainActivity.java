@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         setSupportActionBar(tb);
         //initView();
         initFragments();
-        FragmentPagerAdapter fragmentPagerAdapter = new FragmentAdapter(getSupportFragmentManager());
+        FragmentPagerAdapter fragmentPagerAdapter = new FragmentAdapter(getSupportFragmentManager(),getApplication());
         vp.setAdapter(fragmentPagerAdapter);
         //设置psts
         setTabsValue();
@@ -134,8 +134,8 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
 
     private void initFragments() {
         fragmentList.add(new RecordFragment());
-        stringList.add("Record");
+        stringList.add(getResources().getString(R.string.title_record));
         fragmentList.add(new FileViewerFragment());
-        stringList.add("Saved");
+        stringList.add(getResources().getString(R.string.title_saved));
     }
 }

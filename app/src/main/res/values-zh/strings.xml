@@ -1,0 +1,145 @@
+<resources>
+    <string name="app_name">录音机</string>
+    <string name="record_track">声道</string>
+    <string name="record_quality">质量</string>
+    <string name="settings">设置</string>
+    <string name="Recording">录音中</string>
+    <string name="Paused">暂停</string>
+    <string name="title_record">录音</string>
+    <string name="title_saved">保存</string>
+
+    <!-- About -->
+    <string name="link">Contact: github.com/Insence-neo/AudioRecorder</string>
+
+    <!-- CardView -->
+    <string name="imageId_single_track">R.drawable.ic_track</string>
+    <string name="imageId_dual_track">R.drawable.ic_dual_track</string>
+    <string name="imageId_normal">R.drawable.ic_quality</string>
+    <string name="imageId_high">R.drawable.ic_quality</string>
+    <string name="imageId_premium">R.drawable.ic_quality</string>
+
+    <!-- Permission -->
+    <string name="permissions_required">App需要一些权限</string>
+    <string name="permissions_denied">你已经拒绝了权限</string>
+    <string name="permissions_denied_again">你再一次拒绝了权限</string>
+    <string name="permissions_warning">你已经拒绝了权限将会转到设置页面，否则录音功能则无法使用</string>
+    <string name="permissions_action_yes">是</string>
+    <string name="permissions_action_no">否</string>
+
+    <!-- Dialogs -->
+    <string name="dialog_title_delete">确认删除!</string>
+    <string name="dialog_text_delete">确认删除?</string>
+    <string name="dialog_title_licenses">开源协议</string>
+    <string name="dialog_title_share">分享</string>
+    <string name="dialog_title_rename">重命名</string>
+    <string name="dialog_title_options">选项</string>
+    <string name="dialog_title_details">详细</string>
+
+    <!-- Dialogs Options-->
+    <string name="dialog_file_share">分享</string>
+    <string name="dialog_file_rename">重命名</string>
+    <string name="dialog_file_delete">删除</string>
+    <string name="dialog_file_detail">详细信息</string>
+    <string name="dialog_action_cancel">取消</string>
+    <string name="dialog_action_ok">是</string>
+    <string name="dialog_action_yes">是</string>
+    <string name="dialog_action_no">否</string>
+
+    <!-- Dialogs CardView-->
+    <string name="dialog_single_track">单声道</string>
+    <string name="dialog_single_track_caption">单声道</string>
+    <string name="dialog_dual_track">立体声</string>
+    <string name="dialog_dual_track_caption">双声道</string>
+    <string name="dialog_track">声道</string>
+    <string name="dialog_quality">质量</string>
+    <string name="dialog_normal">一般</string>
+    <string name="dialog_normal_caption">语音便签</string>
+    <string name="dialog_high">高</string>
+    <string name="dialog_high_caption">演讲</string>
+    <string name="dialog_premium">高质量</string>
+    <string name="dialog_premium_caption">Hi-Fi音乐录制</string>
+
+    <!-- Dialogs Details-->
+    <string name="dialog_title_filename">文件名</string>
+    <string name="dialog_title_recording_time">录音时间</string>
+    <string name="dialog_title_length">时长</string>
+    <string name="dialog_title_format">格式</string>
+    <string name="dialog_title_control">降噪/自动增益 </string>
+    <string name="dialog_title_file_location">文件位置</string>
+
+    <!-- Toasts -->
+    <string name="toast_recording_start">录音已开始</string>
+    <string name="toast_recording_finish">录音存储到</string>
+    <string name="toast_file_delete">%1$s 删除成功</string>
+    <string name="toast_file_exists">文件 %1$s 已存在. 选择另外一个文件名.</string>
+    <string name="send_to">发送到</string>
+    <string name="title_activity_settings">设置</string>
+
+    <!-- Strings related to Settings -->
+    <string name="settings_noisesuppressor">开启降噪</string>
+    <string name="settings_noisesuppressor_caption">噪声抑制</string>
+    <string name="info">应用信息</string>
+    <string name="info_caption">协议</string>
+    <string name="settings_AutomaticGainControl">开启增益控制</string>
+    <string name="settings_AutomaticGainControl_caption">音频增强</string>
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact
+        based on your message history
+    </string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="list_preference_entries">
+        <item>Entry 1</item>
+        <item>Entry 2</item>
+        <item>Entry 3</item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value" />
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+</resources>

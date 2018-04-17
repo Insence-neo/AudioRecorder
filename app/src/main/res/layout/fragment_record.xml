@@ -40,8 +40,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/chronometer"
         app:layout_constraintTop_toBottomOf="@+id/chronometer"
-        app:layout_constraintVertical_bias="0.596">
-    </com.scalified.fab.ActionButton>
+        app:layout_constraintVertical_bias="0.65999997"></com.scalified.fab.ActionButton>
 
     <com.scalified.fab.ActionButton
         android:id="@+id/btnStop"
@@ -70,21 +69,21 @@
 
     <android.support.v7.widget.CardView
         android:id="@+id/cd_track"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/dp_150"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/dp_24"
         android:color="#20000000"
         android:foreground="?attr/selectableItemBackground"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guildeline1"
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:cardCornerRadius="4dp"
-        app:cardElevation="3dp">
+        app:layout_constraintVertical_bias="1.0">
 
-        <LinearLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="@dimen/dp_150"
             android:layout_height="wrap_content">
 
@@ -96,35 +95,43 @@
                 android:layout_marginLeft="@dimen/dp_10"
                 android:layout_marginTop="@dimen/dp_5"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_track" />
+                android:src="@drawable/ic_track"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+            <TextView
+                android:id="@+id/textView3"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_18"
+                android:layout_weight="1"
+                android:text="@string/record_track"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/image_cardview_track"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.3" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:paddingLeft="@dimen/dp_18"
-                    android:paddingTop="@dimen/dp_10"
-                    style="@style/TextAppearance.AppCompat.Title"
-                    android:text="@string/record_track"
-                    android:textSize="16sp" />
+            <TextView
+                android:id="@+id/tv_cardview_track"
+                style="@style/TextAppearance.AppCompat.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_18"
+                android:text="Normal"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/image_cardview_track"
+                app:layout_constraintTop_toBottomOf="@+id/textView3"
+                app:layout_constraintVertical_bias="0.0" />
 
-                <TextView
-                    android:id="@+id/tv_cardview_track"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:paddingLeft="@dimen/dp_18"
-                    android:paddingTop="@dimen/dp_3"
-                    style="@style/TextAppearance.AppCompat.Caption"
-                    android:text="normal"
-                    android:textSize="14sp" />
-            </LinearLayout>
-        </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
@@ -143,9 +150,9 @@
         app:cardCornerRadius="4dp"
         app:cardElevation="3dp">
 
-        <LinearLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="@dimen/dp_150"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content" >
 
             <ImageView
                 android:id="@+id/image_cardview_quality"
@@ -155,35 +162,41 @@
                 android:layout_marginLeft="@dimen/dp_10"
                 android:layout_marginTop="@dimen/dp_5"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_quality_high" />
+                android:src="@drawable/ic_quality_high"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_18"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:text="@string/record_quality"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/image_cardview_quality"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.3" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:paddingLeft="@dimen/dp_18"
-                    android:paddingTop="@dimen/dp_10"
-                    style="@style/TextAppearance.AppCompat.Title"
-                    android:text="@string/record_quality"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/tv_cardview_quality"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:paddingLeft="@dimen/dp_18"
-                    android:paddingTop="@dimen/dp_3"
-                    android:text="Normal"
-                    style="@style/TextAppearance.AppCompat.Caption"
-                    android:textSize="14sp" />
-            </LinearLayout>
-        </LinearLayout>
+            <TextView
+                android:id="@+id/tv_cardview_quality"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_18"
+                android:text="Normal"
+                style="@style/TextAppearance.AppCompat.Caption"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/image_cardview_quality"
+                app:layout_constraintTop_toBottomOf="@+id/textView4"
+                app:layout_constraintVertical_bias="0.0" />
+        </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
 
     <android.support.constraint.Guideline
