@@ -145,7 +145,7 @@ public class RecordFragment extends Fragment {
                     canRecord = !canRecord;
                     canPause = !canPause;
                 }
-                // 不可录音 可暂停
+                // 不可录音 可暂停(播放状态)
                 else if ((!canRecord) && canPause) {
                     PauseRecord();
                     //状态转换
@@ -338,8 +338,12 @@ public class RecordFragment extends Fragment {
 
     private void stopRecord() {
         if (!canRecord) {
-            //写下记录总时长
-            length = recordingTime +(SystemClock.elapsedRealtime() - statTime);
+            if ((!canRecord) && canPause) {
+                //写下记录总时长
+                length = recordingTime +(SystemClock.elapsedRealtime() - statTime);
+            } else {
+                length = recordingTime;
+            }
             //写入记录
             editor.putLong("length", length);
             editor.apply();

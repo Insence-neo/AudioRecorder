@@ -55,6 +55,7 @@ public class RecordingService extends Service {
     private RecordingBinder binder = new RecordingBinder();
     private SharedPreferences preferences;
     private boolean check_noise;
+    private boolean check_autogain;
 
     public RecordingService() {
     }
@@ -76,6 +77,7 @@ public class RecordingService extends Service {
         //获取音频设置
         preferences = getSharedPreferences("Data",MODE_PRIVATE);
         check_noise = preferences.getBoolean("check_noise",false);
+        check_autogain = preferences.getBoolean("check_autogain",false);
         trackId = preferences.getInt("trackId",AudioFormat.CHANNEL_IN_MONO);
         sampleRate = preferences.getInt("sampleRate",16000);
         quality_imageId = preferences.getInt("quality_imageId", R.drawable.ic_quality_normal);
@@ -160,15 +162,29 @@ public class RecordingService extends Service {
     }
 
     private void setupRecorder() {
-        //wav方法有两个参数 PullTransport 和File
-        //PullTransport多个参数（音频原mic(),监听音频的接口（实现音频监听的逻辑））
-       recorder = OmRecorder.wav(new PullTransport.Default(mic()),file());
+        if(check_autogain && check_noise == false) {
+            recorder = OmRecorder.wav(new PullTransport.Default(mic()),file());
+        } else if (check_noise == true) {
+            recorder = OmRecorder.wav(new PullTransport.Default(
+                    new PullableSource.NoiseSuppressor(mic())
+            ),file());
+        } else if (check_autogain == true) {
+            recorder = OmRecorder.wav(new PullTransport.Default(
+                    new PullableSource.AutomaticGainControl(mic())
+            ),file());
+        } else {
+            recorder = OmRecorder.wav(new PullTransport.Default(
+                    new PullableSource.AutomaticGainControl(
+                            new PullableSource.NoiseSuppressor(mic())
+                    )
+            ),file());
+        }
+
     }
 
     private File file() {
         int count = 0;
         File f;
-
         do{
             count++;
 
