@@ -27,8 +27,8 @@
     <string name="permissions_action_no">否</string>
 
     <!-- Dialogs -->
-    <string name="dialog_title_delete">确认删除!</string>
-    <string name="dialog_text_delete">确认删除?</string>
+    <string name="dialog_title_delete">警告!</string>
+    <string name="dialog_text_delete">你确定要删除此文件吗？</string>
     <string name="dialog_title_licenses">开源协议</string>
     <string name="dialog_title_share">分享</string>
     <string name="dialog_title_rename">重命名</string>
